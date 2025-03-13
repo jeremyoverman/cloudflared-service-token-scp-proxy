@@ -17,23 +17,6 @@ echo -n "$(cat ~/.ssh/id_rsa.pub)" | base64 -w 0
 
 then copy the results to your secret/var.
 
-<!--doc_begin-->
-### Inputs
-|Input|Description|Default|Required|
-|-----|-----------|-------|:------:|
-|`CLIENT_ID`|Cloudflare access tunnel, service token id|`default`|yes|
-|`CLIENT_SECRET`|Cloudflare access tunnel, service token secret|`default`|yes|
-|`PUBLIC_KEY`|Asymmetric ssh keys for the intended client|`default`|yes|
-|`PRIVATE_KEY`|Asymmetric ssh keys for the intended client|`default`|yes|
-|`HOST`|Cloudflare access tunnel, associated application domain|`0.0.0.0`|yes|
-|`USER`|Remote target username|`root`|yes|
-|`PORT`|Ssh port|`22`|no|
-|`KEY_TYPE`|SSH key type, like id_rsa or id_ed25519|`id_rsa`|no|
-|`FILES`|List of files to copy|``|yes|
-### Outputs
-None
-<!--doc_end-->
-
 ## Usage
 
 Copy files or directories through cloudflared tunnel proxy:
@@ -55,3 +38,20 @@ example:
           ./deploy/staging/docker-compose.yml:/docker/app/docker-compose.yml
           ./deploy/staging/seed:/docker/app/seed
 ```
+
+<!--doc_begin-->
+### Inputs
+|Input|Description|Default|Required|
+|-----|-----------|-------|:------:|
+|`CLIENT_ID`|Cloudflare access tunnel, service token id|`default`|yes|
+|`CLIENT_SECRET`|Cloudflare access tunnel, service token secret|`default`|yes|
+|`PUBLIC_KEY`|Asymmetric ssh keys for the intended client|`default`|yes|
+|`PRIVATE_KEY`|Asymmetric ssh keys for the intended client|`default`|yes|
+|`HOST`|Cloudflare access tunnel, associated application domain|`0.0.0.0`|yes|
+|`USER`|Remote target username|`root`|yes|
+|`PORT`|Ssh port|`22`|no|
+|`KEY_TYPE`|SSH key type, like id_rsa or id_ed25519|`id_rsa`|no|
+|`FILES`|List of files to copy|``|yes|
+### Outputs
+None
+<!--doc_end-->
