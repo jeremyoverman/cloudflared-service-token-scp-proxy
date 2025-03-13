@@ -52,6 +52,5 @@ example:
 |`PORT`|Ssh port|`22`|no|
 |`KEY_TYPE`|SSH key type, like id_rsa or id_ed25519|`id_rsa`|no|
 |`FILES`|List of files to copy|``|yes|
-### Outputs
-None
+
 <!--doc_end-->
