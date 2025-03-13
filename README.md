@@ -24,7 +24,7 @@ Copy files or directories through cloudflared tunnel proxy:
 ```yml
 example:
   - name: cloudflared-service-token-scp-proxy
-      uses: jeremyoverman/cloudflared-service-token-scp-proxy@V1
+      uses: jeremyoverman/cloudflared-service-token-scp-proxy@v0.0.4
       with:
         HOST: ipv4/ipv6 | host address
         USER: username
