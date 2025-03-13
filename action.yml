@@ -1,6 +1,10 @@
 # action.yml
 name: 'cloudflared-service-token-scp-proxy'
 description: 'Copy files through cloudflared tunnel proxy, inside github actions'
+author: jeremyoverman
+branding:
+  icon: copy
+  color: purple
 inputs:
   CLIENT_ID:  # id of input
     description: 'Cloudflare access tunnel, service token id'
