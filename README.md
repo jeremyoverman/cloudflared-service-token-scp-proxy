@@ -3,6 +3,8 @@
 > [!NOTE]  
 > This was forked from [Genesys225/cloudflared-service-token-ssh-proxy](https://github.com/Genesys225/cloudflared-service-token-ssh-proxy) and altered to copy files using SCP rather than running shell commands on the remote host through Cloudflare Tunnels.
 
+## Encode Keys
+
 To correctly encode your keys, use:
 
 ```bash
@@ -14,6 +16,11 @@ echo -n "$(cat ~/.ssh/id_rsa.pub)" | base64 -w 0
 ```
 
 then copy the results to your secret/var.
+
+<!--doc_begin-->
+<!--doc_end-->
+
+## Usage
 
 Copy files or directories through cloudflared tunnel proxy:
 
