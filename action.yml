@@ -1,6 +1,6 @@
 # action.yml
-name: 'cloudflared-service-token-ssh-proxy'
-description: 'Run ssh commands through cloudflared tunnel proxy, inside github actions'
+name: 'cloudflared-service-token-scp-proxy'
+description: 'Copy files through cloudflared tunnel proxy, inside github actions'
 inputs:
   CLIENT_ID:  # id of input
     description: 'Cloudflare access tunnel, service token id'
@@ -11,15 +11,11 @@ inputs:
     required: true
     default: 'default'
   PUBLIC_KEY:  # id of input
-    description: 'asymmetric ssh keys for the intended client'
+    description: 'Asymmetric ssh keys for the intended client'
     required: true
     default: 'default'
   PRIVATE_KEY:  # id of input
-    description: 'asymmetric ssh keys for the intended client'
-    required: true
-    default: 'default'
-  COMMAND:  # id of input
-    description: 'the command to run on the remote target'
+    description: 'Asymmetric ssh keys for the intended client'
     required: true
     default: 'default'
   HOST:  # id of input
@@ -27,33 +23,32 @@ inputs:
     required: true
     default: '0.0.0.0'
   USER:  # id of input
-    description: 'remote target username'
+    description: 'Remote target username'
     required: true
     default: 'root'
   PORT:  # id of input
-    description: 'ssh port'
+    description: 'Ssh port'
     required: false
-    type: number
-    default: 22
-  REMOTE_SHELL:  # id of input
-    description: 'shell to run the ssh command in. You can pass in arguments with `sh -s arg1 arg2`'
-    required: false
-    default: 'sh'
+    default: '22'
   KEY_TYPE:  # id of input
     description: 'SSH key type, like id_rsa or id_ed25519'
     required: false
     default: 'id_rsa'
+  FILES:  # id of input
+    description: 'List of files to copy'
+    required: true
+    default: ''
+  
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.HOST }}
     - ${{ inputs.USER }}
-    - ${{ inputs.COMMAND }}
     - ${{ inputs.CLIENT_ID }}
     - ${{ inputs.CLIENT_SECRET }}
     - ${{ inputs.PUBLIC_KEY }}
     - ${{ inputs.PRIVATE_KEY }}
     - ${{ inputs.KEY_TYPE }}
     - ${{ inputs.PORT }}
-    - ${{ inputs.REMOTE_SHELL }}
+    - ${{ inputs.FILES }}

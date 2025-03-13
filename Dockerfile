@@ -6,7 +6,6 @@ RUN curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | tee /usr/share/k
 # Add this repo to your apt repositories
 RUN echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared jammy main' | tee /etc/apt/sources.list.d/cloudflared.list
 
-WORKDIR /
 USER root
 RUN mkdir /root/.ssh
 RUN touch /root/.ssh/config

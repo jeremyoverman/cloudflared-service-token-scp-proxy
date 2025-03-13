@@ -1,16 +1,23 @@
-# cloudflared-service-token-ssh-proxy
+# cloudflared-service-token-scp-proxy
 
-to correctly encode your keys, use:
+To correctly encode your keys, use:
+
 ```bash
+# PRIVATE_KEY
+echo -n "$(cat ~/.ssh/id_rsa)" | base64 -w 0
+
+# PUBLIC_KEY
 echo -n "$(cat ~/.ssh/id_rsa.pub)" | base64 -w 0
 ```
+
 then copy the results to your secret/var.
 
-run ssh command through cloudflared tunnel proxy
+Copy files or directories through cloudflared tunnel proxy:
+
 ```yml
 example:
-  - name: cloudflared-service-token-ssh-proxy
-      uses: Genesys225/cloudflared-service-token-ssh-proxy@V1
+  - name: cloudflared-service-token-scp-proxy
+      uses: jeremyoverman/cloudflared-service-token-scp-proxy@V1
       with:
         HOST: ipv4/ipv6 | host address
         USER: username
@@ -20,8 +27,7 @@ example:
         PUBLIC_KEY: ${{ secrets.PUBLIC_KEY }}
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         KEY_TYPE: id_rsa
-        REMOTE_SHELL: 'sh'
-        COMMAND: |
-          docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          docker-compose up -d {{ env.IMAGE_NAME }}:latest
+        FILES: |
+          ./deploy/staging/docker-compose.yml:/docker/app/docker-compose.yml
+          ./deploy/staging/seed:/docker/app/seed
 ```
