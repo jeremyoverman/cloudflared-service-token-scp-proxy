@@ -41,7 +41,6 @@ inputs:
   FILES:  # id of input
     description: 'List of files to copy'
     required: true
-    default: ''
   
 runs:
   using: 'docker'
